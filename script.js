@@ -7,13 +7,38 @@ function getWeather(lat, lon) {
     $.ajax({
         url: urlString, 
         success: function (result) {
-            console.log(city)
+            const toggle = toggleUnit(result.main.temp)
+            //first toggle call sets temp in celsius
+            toggle()
             $("#city").text(result.name + ", ");
             $("#country").text(result.sys.country);
-            $("#temp").text(result.main.temp);
             $("#img").attr("src", result.weather[0].icon);
+            $("#convertBtn").click(toggle)
+            $("#description").text(result.weather[0].description);
+            console.log(result);
         }
     })
+}
+
+
+function convertToF(celcius) {
+    const fahrenheit = 9/5 * celcius + 32;
+    return fahrenheit;
+}
+
+const toggleUnit = (tempInC) => {
+    let unit = "C";
+    return () => {
+        if(unit === 'C') {
+            $("#temp").text(tempInC);
+            $("#convertBtn").text("Convert to F")
+            unit = "F"
+        } else {
+            $("#temp").text(convertToF(tempInC))
+            $("#convertBtn").text("Convert to C")
+            unit = "C"
+        }
+    }
 }
 
 $(document).ready(function(){

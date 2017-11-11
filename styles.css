@@ -1,0 +1,20 @@
+.body{
+	color: #fff;
+	padding: 15px;
+	margin-top: 20px;
+	font-weight: bold;
+	border-radius: 8px;
+    background: linear-gradient(160deg,hsla(186, 83%, 61%, 0.945),rgb(39, 80, 116),rgb(16, 8, 66));
+    font-family: 'Merriweather', serif;
+}
+.header {
+    font-size: 80px;
+}
+
+.btn {
+
+}
+.img {
+    height: 100px;
+    width: 100;
+}

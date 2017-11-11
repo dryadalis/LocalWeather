@@ -15,7 +15,6 @@ function getWeather(lat, lon) {
             $("#img").attr("src", result.weather[0].icon);
             $("#convertBtn").click(toggle)
             $("#description").text(result.weather[0].description);
-            console.log(result);
         }
     })
 }

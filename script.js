@@ -12,16 +12,20 @@ function getWeather(lat, lon) {
             toggle()
             document.getElementById('city').innerHTML = (result.name + ", ");
             document.getElementById('country').innerHTML =(result.sys.country);
-            document.getElementById('img').setAttribute("src", result.weather[0].icon);
             document.getElementById('convertBtn').addEventListener("click", toggle);
             document.getElementById('description').innerHTML = (result.weather[0].description);
+            const weather = {
+                temperatureInC: result.main.temp
+            }
+            displayIcon(weather);
         }
     })
 }
 //Set local time and date.
 function getTime()
 {
-    return (new Date()).toLocaleTimeString();
+    const date = new Date();
+    return date.toLocaleTimeString();
 }
  
 //wywołanie ma na celu eliminację opóźnienia sekundowego
@@ -58,6 +62,28 @@ const toggleUnit = (tempInC) => {
         }
     }
 }
+
+function displayIcon (weather) {
+    const hour = (new Date()).getHours();   
+    const icon = document.getElementById('icon');
+    const temp = weather.temperatureInC;
+    if( hour <= 5 || hour >= 18){
+        icon.classList.add("wi-night-clear");
+    } else {
+        icon.classList.add("wi-day-sunny");
+            if (temp >= 25){
+                icon.classList.add("wi-hot");
+            } else if (temp < 25 || temp >= 10) {
+                icon.classList.add("wi-day-cloudy");
+            } else if (temp < 10 || temp >= 0) {
+                icon.classList.add("wi-cloud");
+            } else {
+                icon.classList.add("wi-snowflake-cold");
+            }
+        console.log("day");
+    }
+}
+
 // Get your current location.
 $(document).ready(function(){
     if (navigator.geolocation){

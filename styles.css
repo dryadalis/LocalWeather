@@ -8,7 +8,8 @@
     font-family: 'Merriweather', serif;
 }
 .header {
-    font-size: 80px;
+    font-size: 50px;
+    margin : auto;
 }
 
 .btn {
@@ -21,20 +22,23 @@
     color: blue;
 }
 
-.img {
-    height: 100px;
-    width: 100;
+.icon {
+    font-size: 150px;
+    position: relative;
+    margin-top: 10%;
+    text-align: right;
+
 }
 .city {
     font-size: 50px;
     font-family: 'Merriweather', serif;
 }
-.description{
+.description {
     font-size: 30px;
     font-family: 'Merriweather', serif;
 }
 .temp {
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Merriweather', serif;
 }
 .time {

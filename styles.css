@@ -12,9 +12,32 @@
 }
 
 .btn {
-
+    position: relative;
+    margin : 4%;
+    height: 40px;
+    width: 120px;
+    border-radius: 3px;
+    text-align: center;
+    color: blue;
 }
+
 .img {
     height: 100px;
     width: 100;
+}
+.city {
+    font-size: 50px;
+    font-family: 'Merriweather', serif;
+}
+.description{
+    font-size: 30px;
+    font-family: 'Merriweather', serif;
+}
+.temp {
+    font-size: 50px;
+    font-family: 'Merriweather', serif;
+}
+.time {
+    text-align: right;
+    font-size: 30px;
 }

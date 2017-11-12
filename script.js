@@ -10,23 +10,42 @@ function getWeather(lat, lon) {
             const toggle = toggleUnit(result.main.temp)
             //first toggle call sets temp in celsius
             toggle()
-            $("#city").text(result.name + ", ");
-            $("#country").text(result.sys.country);
-            $("#img").attr("src", result.weather[0].icon);
-            $("#convertBtn").click(toggle)
-            $("#description").text(result.weather[0].description);
+            document.getElementById('city').innerHTML = (result.name + ", ");
+            document.getElementById('country').innerHTML =(result.sys.country);
+            document.getElementById('img').setAttribute("src", result.weather[0].icon);
+            document.getElementById('convertBtn').addEventListener("click", toggle);
+            document.getElementById('description').innerHTML = (result.weather[0].description);
         }
     })
 }
+//Set local time and date.
+function getTime()
+{
+    return (new Date()).toLocaleTimeString();
+}
+ 
+//wywołanie ma na celu eliminację opóźnienia sekundowego
+document.getElementById('time').innerHTML = getTime();
+ 
+setInterval(function() {
+ 
+    document.getElementById('time').innerHTML = getTime();
+     
+}, 1000);
+function getDate()
+{
+    return (new Date()).toLocaleDateString();
+}
+document.getElementById('date').innerHTML = getDate();
 
-
+// Convert Celcius to Fahrenheit
 function convertToF(celcius) {
     const fahrenheit = 9/5 * celcius + 32;
     return fahrenheit;
 }
 
 const toggleUnit = (tempInC) => {
-    let unit = "C";
+    let unit = "C" ;
     return () => {
         if(unit === 'C') {
             $("#temp").text(tempInC);
@@ -39,7 +58,7 @@ const toggleUnit = (tempInC) => {
         }
     }
 }
-
+// Get your current location.
 $(document).ready(function(){
     if (navigator.geolocation){
         navigator.geolocation.getCurrentPosition((positon) => {
